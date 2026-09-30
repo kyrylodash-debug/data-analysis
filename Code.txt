@@ -1,0 +1,47 @@
+
+SQL COMMANDS
+
+To show average price by categories
+
+SELECT categoryName AS category, AVG(unitPrice) AS average 
+FROM order_details
+JOIN products ON order_details.productID = products.productID
+JOIN categories ON products.categoryID = categories.categoryID
+GROUP BY categoryName
+
+
+UPDATED(issue fixed)
+
+SELECT categoryName AS category, AVG(order_details.unitPrice) AS average 
+FROM order_details
+JOIN products ON order_details.productID = products.productID
+JOIN categories ON products.categoryID = categories.categoryID
+GROUP BY categoryName
+
+
+
+To show most expensive units
+
+SELECT productName AS Title, unitPrice AS Price 
+FROM products 
+GROUP BY Title 
+ORDER BY Price DESC 
+LIMIT 5
+
+
+
+To show least expensive units
+
+SELECT productName AS Title, unitPrice AS Price 
+FROM products 
+GROUP BY Title 
+ORDER BY Price ASC
+LIMIT 5
+
+/////////////////////////
+
+R COMMAND
+
+To show basic statistical metrics
+
+summary(north)
